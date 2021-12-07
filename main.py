@@ -19,7 +19,7 @@ app = FastAPI()
 jwt_secret = '336215407d0ca400fecdf873c090345accd53ce976e705f8ed6a71492c8394c2'
 jwt_algorithm = 'HS256'
 
-user23 = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlcjIzQGV4YW1wbGUuY29tIiwiZXhwaXJlcyI6MTYzODg4OTE3MC4zOTg3NTc1fQ.JNb_zJVLPpPHTJGrxY45w8L5SfIj07b7ZXDZuo0ViSI'
+user25 = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlcjI1QGV4YW1wbGUuY29tIiwiZXhwaXJlcyI6MTYzODg5NjIxMS4xMTk4NTczfQ.eG3AXiw1Fy7K6buTSkSz_H5VQyJL96kDD0t3mCEz7FY'
 
 @app.get("/")
 async def home():

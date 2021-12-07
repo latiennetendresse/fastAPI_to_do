@@ -21,5 +21,6 @@ class Task(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     is_done = Column(Boolean, default=False)
+    owner_id = Column(Integer, ForeignKey("users.id"), index=True)
 
     owner = relationship("User", back_populates="tasks")
