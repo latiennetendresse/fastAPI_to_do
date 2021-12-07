@@ -21,6 +21,7 @@ class Task(TaskBase):
 
 
 class UserBase(BaseModel):
+
     email: str
     name: str
 
@@ -37,3 +38,8 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
