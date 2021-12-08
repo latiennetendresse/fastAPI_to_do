@@ -21,6 +21,7 @@ jwt_algorithm = 'HS256'
 
 user25 = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlcjI1QGV4YW1wbGUuY29tIiwiZXhwaXJlcyI6MTYzODg5NjIxMS4xMTk4NTczfQ.eG3AXiw1Fy7K6buTSkSz_H5VQyJL96kDD0t3mCEz7FY'
 
+
 @app.get("/")
 async def home():
     return {"message": "To do shnik"}
@@ -37,7 +38,7 @@ def get_db():
 
 def create_access_token(user_email: str):
     payload = {
-        "user_id": user_email,
+        "user_email": user_email,
         "expires": time.time() + 6000
     }
     encoded_token = jwt.encode(payload, jwt_secret, algorithm=jwt_algorithm)
@@ -80,7 +81,7 @@ security_authorization = TokenAPIKeyHeader(name="Authorization")
 def get_user(authorization: HTTPAuthorizationCredentials = Security(security_authorization),
              db: Session = Depends(get_db)):
     data = decode_token(authorization.credentials)
-    user = crud.get_user_by_email(db, email=data['user_id'])
+    user = crud.get_user_by_email(db, email=data['user_email'])
     return user.id
 
 
