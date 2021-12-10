@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from pydantic import BaseModel, EmailStr
 
 
@@ -34,7 +32,6 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    # tasks: List[Task] = []
 
     class Config:
         orm_mode = True

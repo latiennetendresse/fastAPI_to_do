@@ -1,5 +1,7 @@
 import time
 import jwt
+from fastapi import HTTPException
+from starlette.status import HTTP_403_FORBIDDEN
 
 jwt_secret = '336215407d0ca400fecdf873c090345accd53ce976e705f8ed6a71492c8394c2'
 jwt_algorithm = 'HS256'
@@ -21,4 +23,7 @@ def decode_token(encoded_token: str):
         decoded_token = jwt.decode(encoded_token, jwt_secret, algorithms=[jwt_algorithm])
         return decoded_token if decoded_token["expires"] >= time.time() else None
     except:
-        return {}
+        raise HTTPException(
+            status_code=HTTP_403_FORBIDDEN,
+            detail="wrong token"
+        )

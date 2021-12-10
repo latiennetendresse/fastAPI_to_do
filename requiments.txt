@@ -1,6 +1,0 @@
-fastapi==0.70.0
-uvicorn==0.14.0
-sqlalchemy==1.4.27
-alembic==1.7.5
-pyjwt==1.7.1
-
