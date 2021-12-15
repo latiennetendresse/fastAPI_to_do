@@ -4,11 +4,16 @@ services:
   app:
     build: .
     volumes:
-      - .:/app
+      - ./app:/app
     ports:
-      - 8008:80
+      - "8000:8000"
     depends_on:
       - db
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DATABASE: to_do
   db:
     image: postgres:12-alpine
     volumes:
@@ -17,6 +22,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DATABASE: to_do
-      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_HOST: db
     ports:
-      - 5432:5432
+      - "5432:5432"
