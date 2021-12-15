@@ -3,11 +3,10 @@ version: '3.8'
 services:
   app:
     build: .
-    command: uvicorn main:app --host 0.0.0.0
     volumes:
       - .:/app
     ports:
-      - 8008:8000
+      - 8008:80
     depends_on:
       - db
   db:
@@ -15,6 +14,9 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data/
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-    expose:
-      - 5432
+      POSTGRES_DATABASE: to_do
+      POSTGRES_HOST: 127.0.0.1
+    ports:
+      - 5432:5432
